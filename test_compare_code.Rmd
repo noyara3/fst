@@ -2,9 +2,9 @@
 
 # Assuming 'sites_order' contains the desired order of sites
 
-sites_order <- c ("Heikkisenjoki_Background_C", "Heikkisenjoki_Background_R","Heikkisenjoki_Recovery_C", "Heikkisenjoki_Recovery_R", "Heikkisenjoki_Contemporary_C", "Heikkisenjoki_Contemporary_R", "KALL_Background_C", "KALL_Background_R", "KALL_Recovery_C", "KALL_Recovery_R", "KALL_Contemporary_C", "KALL_Contemporary_R", "Savijoki_Background_C", "Savijoki_Background_R", "Savijoki_Recovery_C", "Savijoki_Recovery_R", "Savijoki_Contemporary_C", "Savijoki_Contemporary_R", "Siltapuro_Background_C", "Siltapuro_Background_R", "Siltapuro_Recovery_C", "Siltapuro_Recovery_R", "Siltapuro_Contemporary_C", "Siltapuro_Contemporary_R")
+sites_order <- c ("Heikkisenjoki_Background_C", "Heikkisenjoki_Background_R","Heikkisenjoki_Recovery_C", "Heikkisenjoki_Recovery_R", "Heikkisenjoki_Contemporary_C", "Heikkisenjoki_Contemporary_R", "KALL_Background_C", "KALL_Background_R", "KALL_Recovery_C", "KALL_Recovery_R", "KALL_Contemporary_C", "KALL_Contemporary_R", "Savijoki_Background_C", "Savijoki_Background_R", "Savijoki_Recovery_C", "Savijoki_Recovery_R", "Savijoki_Contemporary_C", "Savijoki_Contemporary_R", "Siltapuro_Background_C", "Siltapuro_Background_R", "Siltapuro_Recovery_C", "Siltapuro_Recovery_R")
 
-Het_Btrout_df$Site <- factor(Het_Btrout_df$Site, levels = sites_order)
+Het_Btrout_df$Site <- factor(Het_Btrout_df$Site, levelsn= levels() = sites_order)
 
 
 # test
