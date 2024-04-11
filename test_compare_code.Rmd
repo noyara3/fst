@@ -28,3 +28,49 @@ ggplot(data = Het_Btrout_df, aes(x = Site, y = value, fill = color))+
   custom_theme
 ```
 
+```{r}
+
+# Assuming 'sites_order' contains the desired order of sites
+
+sites_order <- c ("Heikkisenjoki_Background_C", "Heikkisenjoki_Background_R","Heikkisenjoki_Recovery_C", "Heikkisenjoki_Recovery_R", "Heikkisenjoki_Contemporary_C", "Heikkisenjoki_Contemporary_R", "KALL_Background_C", "KALL_Background_R", "KALL_Recovery_C", "KALL_Recovery_R", "KALL_Contemporary_C", "KALL_Contemporary_R", "Savijoki_Background_C", "Savijoki_Background_R", "Savijoki_Recovery_C", "Savijoki_Recovery_R", "Savijoki_Contemporary_C", "Savijoki_Contemporary_R", "Siltapuro_Background_C", "Siltapuro_Background_R", "Siltapuro_Recovery_C", "Siltapuro_Recovery_R", "Siltapuro_Contemporary_C", "Siltapuro_Contemporary_R")
+
+Het_Btrout_df$Site <- factor(Het_Btrout_df$Site, levels = sites_order)
+
+
+# test
+# Convert 'Site' to a factor with specified levels
+Het_Btrout_df = data.frame(Site = names(Ho_Btrout), Ho = Ho_Btrout) %>%
+  melt(id.vars = "Site")
+
+Het_Btrout_df$color <- ifelse(substr(Het_Btrout_df$Site, nchar(as.character(Het_Btrout_df$Site)), nchar(as.character(Het_Btrout_df$Site))) == "C", "white", "red")
+
+# Filter out the 'He' values from the dataframe
+Het_Btrout_df <- Het_Btrout_df[Het_Btrout_df$variable == "Ho", ]
+
+# Rest of your ggplot code remains unchanged
+
+ custom_theme = theme(
+  axis.text.x = element_text(size = 10, angle = 90, vjust = 0.5, face = "bold"),
+  axis.text.y = element_text(size = 10),
+  axis.title.y = element_text(size = 12),
+  axis.title.x = element_blank(),
+  axis.line.y = element_line(size = 0.5),
+  legend.title = element_blank(),
+  legend.text = element_text(size = 12),
+  panel.grid = element_blank(),
+  panel.background = element_blank(),
+  plot.title = element_text(hjust = 0.5, size = 15, face="bold")
+  )
+hetlab.o = expression(italic("H")[o])
+
+
+ggplot(data = Het_Btrout_df, aes(x = Site, y = value, fill = color))+
+  geom_bar(stat = "identity", position = "dodge", colour = "black")+
+  scale_y_continuous(expand = c(0,0), limits = c(0,0.750), breaks = c(0, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60))+
+  scale_fill_manual(values = c("blue", "#bdbdbd"), labels = c(hetlab.o))+
+  ylab("Heterozygosity")+
+  ggtitle("B.trout Heterozygosity")+
+  custom_theme
+
+```
+
